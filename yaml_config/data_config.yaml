@@ -1,0 +1,19 @@
+# featuresumns:
+features:
+  gender        :          object
+  age            :          int32
+  hypertension    :         int64
+  heart_disease    :        int64
+  smoking_history   :      object
+  bmi               :     float64
+  HbA1c_level        :    float64
+  blood_glucose_level :     int64
+  diabetes             :    int64
+
+target_feature:
+  name : diabetes
+
+gender_map : {"Other", "Female"}
+smoking_history_map: {"former":"past_smoker",
+                    "not current": "past_smoker",
+                    "ever": "past_smoker"}
