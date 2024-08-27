@@ -1,7 +1,7 @@
 artifacts_root: artifacts
 
 data_extraction:
-  source_url: "https://drive.google.com/file/d/1N-X8aij_9FtAtrDBfRHQKGE0vtIUC67i/view?usp=sharing"
+  source_url: "https://drive.google.com/file/d/1dLr9oiwqYrHvztjKOl92zw__yq0Pnw5K/view?usp=sharing"
   prefix: "https://drive.google.com/uc?/export=download&id="
-  local_data_file: artifacts/data_ingestion/clean_data.csv
+  local_data_file: artifacts/data_ingestion/data.csv
   local_load_dir: artifacts/data_ingestion
