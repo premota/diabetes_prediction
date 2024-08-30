@@ -7,4 +7,10 @@ class DataExtractionConfig:
     prefix: str
     local_data_file: Path
     local_load_dir: Path
-    
+
+
+@dataclass(frozen = True)
+class DataSchemaConfig:
+    data_schema_validation: dict
+    data: Path
+

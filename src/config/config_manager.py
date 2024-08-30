@@ -1,5 +1,5 @@
 from yaml_config.yaml_path import PIPELINE_CONFIG_PATH
-from src.config.entity_config import DataExtractionConfig
+from src.config.entity_config import DataExtractionConfig, DataSchemaConfig
 from src.utils.util import read_yaml, create_folder
 from src.utils.exception import CustomException
 from src.utils.logger import logging
@@ -15,9 +15,6 @@ class ConfigManager:
         try:
             logging.info("collecting extraction config")
             config = self.pipeline_config.data_extraction
-            logging.info("data extraction folder created")
-            create_folder(config.local_load_dir)
-
             data_extraction_config = DataExtractionConfig(source_url = config.source_url,
                                                         prefix = config.prefix,
                                                         local_data_file = config.local_data_file,
@@ -27,3 +24,13 @@ class ConfigManager:
         except Exception as e:
             raise CustomException(e,sys)
 
+    def get_schema_validation_config(self)-> DataSchemaConfig:
+        try:
+            data_path = self.pipeline_config.data_extraction.local_data_file
+            logging.info("collecting schema validation config")
+            config = self.pipeline_config.data_schema_validation
+            data_schema_validation_config = DataSchemaConfig(data_schema_validation= config, data=data_path)
+            logging.info("validation config completed")
+            return data_schema_validation_config
+        except Exception as e:
+            raise CustomException(e, sys)

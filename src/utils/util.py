@@ -1,5 +1,6 @@
 from pathlib import Path
 import yaml
+import pandas as pd
 
 from box import Box
 import sys
@@ -22,3 +23,10 @@ def create_folder(path: Path):
         os.makedirs(path, exist_ok = True)
     except Exception as e:
         raise CustomException(e, sys)
+    
+def read_dataframe(path:Path):
+    try:
+        data = pd.read_csv(Path)
+        return data
+    except Exception as e:
+        raise CustomException(e,sys)
