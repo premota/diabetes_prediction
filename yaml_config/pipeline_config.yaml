@@ -16,3 +16,8 @@ data_schema_validation:
   HbA1c_level        :    float64
   blood_glucose_level :     int64
   diabetes             :    int64
+
+
+data_transformation:
+  transformation_artifact_file: artifacts/data_transformation/transform.pkl
+  target_feature : "diabetes"

@@ -1,5 +1,7 @@
 from yaml_config.yaml_path import PIPELINE_CONFIG_PATH
-from src.config.entity_config import DataExtractionConfig, DataSchemaConfig
+from src.config.entity_config import (DataExtractionConfig, DataSchemaConfig,
+                                      DataTransformationConfig)
+
 from src.utils.util import read_yaml, create_folder
 from src.utils.exception import CustomException
 from src.utils.logger import logging
@@ -8,6 +10,7 @@ import sys
 
 class ConfigManager:
     def __init__(self, pipline_config = PIPELINE_CONFIG_PATH):
+        # locates the yaml file that contains all pipeline configurations
         self.pipeline_config = read_yaml(pipline_config)
 
     
@@ -24,6 +27,7 @@ class ConfigManager:
         except Exception as e:
             raise CustomException(e,sys)
 
+
     def get_schema_validation_config(self)-> DataSchemaConfig:
         try:
             data_path = self.pipeline_config.data_extraction.local_data_file
@@ -34,3 +38,15 @@ class ConfigManager:
             return data_schema_validation_config
         except Exception as e:
             raise CustomException(e, sys)
+        
+
+    def get_data_transformation_config(self)-> DataTransformationConfig:
+        try:
+            config = self.pipeline_config.data_transformation
+            transformation_config = DataTransformationConfig(transformation_artifact_file=config.transformation_artifact_file,
+                                                        target_feature = config.target_feature)
+            logging.info("transformation config completed")
+            return transformation_config
+
+        except Exception as e:
+            raise CustomException(e,sys)

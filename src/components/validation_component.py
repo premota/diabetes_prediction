@@ -33,11 +33,11 @@ class DataValidationComponent():
             raise CustomException(e,sys)
     
 
-    def validate_data_types(self):
+    def validate_data_types(self, data_frame):
         try:
             logging.info("data types validation initiated")
             datatype_map = self.config
-            data = self.data.astype(datatype_map)
+            data = data_frame.astype(datatype_map)
             logging.info("data types validation completed")
             return data
 

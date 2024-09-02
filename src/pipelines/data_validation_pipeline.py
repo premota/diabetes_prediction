@@ -16,19 +16,14 @@ class DataValidationPipeline:
             validation_obj = DataValidationComponent(config = validation_config)
             
             #validate features
-            validation_obj.validate_features()
+            df = validation_obj.validate_features()
 
             #validate datatypes
-            validation_obj.validate_data_types()
+            df = validation_obj.validate_data_types(df)
+            return df
 
         except Exception as e:
             raise CustomException(e,sys)
-
-
-
-if __name__ == "__main__":
-    obj = DataValidationPipeline()
-    obj.validate_data()
 
 
 

@@ -14,3 +14,7 @@ class DataSchemaConfig:
     data_schema_validation: dict
     data: Path
 
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    transformation_artifact_file: Path
+    target_feature: str
