@@ -9,11 +9,9 @@ from src.utils.logger import logging
 import sys
 
 class ConfigManager:
-    def __init__(self, pipline_config = PIPELINE_CONFIG_PATH):
-        # locates the yaml file that contains all pipeline configurations
-        self.pipeline_config = read_yaml(pipline_config)
+    # changes
+        # changes
 
-    
     def get_extraction_config(self)-> DataExtractionConfig:
         try:
             logging.info("collecting extraction config")
