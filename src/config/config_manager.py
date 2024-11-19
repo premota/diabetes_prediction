@@ -6,7 +6,7 @@ from src.utils.util import read_yaml, create_folder
 from src.utils.exception import CustomException
 from src.utils.logger import logging
 
-import sys
+
 
 class ConfigManager:
     def __init__(self, pipline_config = PIPELINE_CONFIG_PATH):
